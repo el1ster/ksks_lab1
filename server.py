@@ -94,24 +94,17 @@ def process_command(command):
         else:
             print("Помилка: невірна кількість параметрів")
     elif command_name == "draw image":
-        if len(parameters) == 4:
-            x0, y0, w, h = map(str.strip, parameters[:4])
-            data = parameters[4]
-            data_length = int(w) * int(h) * 4  # assuming color is represented with 4 bytes (e.g., RGBA)
-            if len(data) == data_length:
-                print(
-                    f"Виконано команду: {command_name}, x0: {x0}, y0: {y0}, w: {w}, h: {h}, data_length: {data_length}")
-            else:
-                print("Помилка: невірна довжина даних")
+        if len(parameters) == 5:
+            x0, y0, w, h, data = map(str.strip, parameters)
+            print(
+                f"Виконано команду: {command_name}, x0: {x0}, y0: {y0}, w: {w}, h: {h}, data: {data}")
         else:
             print("Помилка: невірна кількість параметрів")
-    else:
-        print(f"Невідома команда: {command_name}")
 
 
 def main():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    server_address = ('localhost', 12345)
+    server_address = ('localhost', 3306)
     server_socket.bind(server_address)
 
     print("Сервер запущено")

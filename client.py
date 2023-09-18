@@ -20,7 +20,7 @@ def show_available_commands():
 
 def main():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    server_address = ('localhost', 12345)
+    server_address = ('localhost', 3306)
 
     show_available_commands()
 
